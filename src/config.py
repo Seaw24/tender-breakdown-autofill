@@ -1,25 +1,34 @@
 # config.py
 
 # Maps keywords found in filenames to the official names in the Breakdown sheet
+"""Settings: 
+{
+  "filepath" : [{"Location name 1 in Breakdown sheet" : "What to look for in casheet"}},
+    ...         {"Location name 2 in Breakdown sheet" : "What to look for in casheet"}] 
+  }
+  """
+
 FILENAME_TO_MASTER_NAME = {
-    "Beanyard": "Beanyard",
-    "Crimson Corner": "Crimson Corner",
-    "UnionShakeSmart": "Union Shake Smart",
-    "gardner": "Gardner",
-    "Honors": "HONORS",
-    "KV": "Kahlert",
-    "Shake Smart": "Student Life Center",
-    "Epicenter": "Epicenter",
-    "cv casheet": "Crimson View",
-    "Satellite": "Einsteins",
-    "HECS": "Hive"
+    "Beanyard": [{"Beanyard": "TOTALS"}],
+    "Crimson Corner": [{"Crimson Corner": "TOTALS"}],
+    "UnionShakeSmart": [{"Union Shake Smart": "TOTALS"}],
+    "gardner": [{"Gardner": "TOTALS"}],
+    "Honors": [{"HONORS": "TOTALS"}],
+    "KV": [{"Kahlert": "TOTALS"}],
+    "Shake Smart": [{"Student Life Center": "TOTALS"}],
+    "Epicenter": [{"Epicenter": "TOTALS"}],
+    "cv casheet": [{"Crimson View": "TOTALS"}],
+    "Lassonde": [{"Lassonde": "TOTALS"}],
+    "Satellite": [{"Einsteins": "TOTALS"}],
+    "HECS": [{"Hive": "Hive Tavlo"}, {"Quartz": "Quartz Café"}],
+    "HUB": [{"City's Edge": "TOTALS"}],
+    "CRSS": [{"Seagull Sunrise": "TOTALS"}],
+    "csfs": [{"Union Food Court": "TOTALS"}],
 }
 
-# The starting column index for each location in Tender Breakdown.xlsx
-BREAKDOWN_LOC_MAP = {
-    "PHC": 2, "Crimson View": 14, "Einsteins": 26, "Hive": 38,
-    "Union Food Court": 50, "HONORS": 62, "Gardner": 74,
-    "Crimson Corner": 86, "Lassonde": 98, "Beanyard": 110,
-    "Student Life Center": 122, "Kahlert": 134, "Union Shake Smart": 146,
-    "Epicenter": 158, "Quartzdyne": 170, "Seagull Sunrise": 182, "City's Edge": 194
+
+# Directory paths for cash sheets and master file
+DIRECTORY_PATHS = {
+    "casheets_dir": "cash sheets",
+    "master_file": "Tender Breakdown.xlsx"
 }
