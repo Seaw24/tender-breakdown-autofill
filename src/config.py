@@ -9,26 +9,49 @@
   """
 
 FILENAME_TO_MASTER_NAME = {
-    "Beanyard": [{"Beanyard": "TOTALS"}],
-    "Crimson Corner": [{"Crimson Corner": "TOTALS"}],
-    "UnionShakeSmart": [{"Union Shake Smart": "TOTALS"}],
-    "gardner": [{"Gardner": "TOTALS"}],
-    "Honors": [{"HONORS": "TOTALS"}],
-    "KV": [{"Kahlert": "TOTALS"}],
-    "Shake Smart": [{"Student Life Center": "TOTALS"}],
-    "Epicenter": [{"Epicenter": "TOTALS"}],
-    "cv casheet": [{"Crimson View": "TOTALS"}],
-    "Lassonde": [{"Lassonde": "TOTALS"}],
-    "Satellite": [{"Einsteins": "TOTALS"}],
-    "HECS": [{"Hive": "Hive Tavlo"}, {"Quartz": "Quartz Café"}],
-    "HUB": [{"City's Edge": "TOTALS"}],
-    "CRSS": [{"Seagull Sunrise": "TOTALS"}],
-    "csfs": [{"Union Food Court": "TOTALS"}],
+    "beanyard": [{"beanyard": "TOTALS"}],
+    "crimson corner": [{"crimson corner": "TOTALS"}],
+    "unionshakesmart": [{"union shake smart": "TOTALS"}],
+    "gardner": [{"gardner": "TOTALS"}],
+    "honors": [{"honors": "TOTALS"}],
+    "kv": [{"kahlert": "TOTALS"}],
+    "shake smart ": [{"student life center": "TOTALS"}],
+    "epicenter": [{"epicenter": "TOTALS"}],
+    "cv casheet": [{"crimson view": "TOTALS"}],
+    "lassonde": [{"lassonde": "TOTALS"}],
+    "satellite": [{"einsteins": "TOTALS"}],
+    "hecs": [{"hive": "Hive Tavlo"}, {"quartzdyne": "Quartz Café"}],
+    "hub": [{"city's edge": "TOTALS"}],
+    "crss": [{"seagull sunrise": "TOTALS"}],
+    "csfs": [{"union food court": "TOTALS"}],
+    "shake smart": [{"student life center": "TOTALS"}],
 }
 
-
+# Starting column of each location in the tender breakdown sheet
+LOCATION_START_COL = {
+    "phc": 2,
+    "crimson view": 14,
+    "einsteins": 26,
+    "hive": 38,
+    "union food court": 50,
+    "honors": 62,
+    "gardner": 74,
+    "crimson corner": 86,
+    "lassonde": 98,
+    "beanyard": 110,
+    "student life center": 122,
+    "kahlert": 134,
+    "union shake smart": 146,
+    "epicenter": 158,
+    "quartzdyne": 170,
+    "seagull sunrise": 182,
+    "city's edge": 194
+}
 # Directory paths for cash sheets and master file
 DIRECTORY_PATHS = {
     "casheets_dir": "cash sheets",
-    "master_file": "Tender Breakdown.xlsx"
+    "master_path": "Tender Breakdown.xlsx"
 }
+
+# Data/Col in the cash sheet that needs to be filled to the tender breakdown
+IMPORTANT_CASHEET_DATA_COL = [3,4,6,7,8,11, 13, 16,17,18,19]
