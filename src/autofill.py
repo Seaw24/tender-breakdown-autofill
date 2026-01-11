@@ -222,6 +222,7 @@ def main():
         d_str = str(date) if date else "N/A"
         print(f"   • {loc if loc else 'Unknown':<20} | {d_str:<10} | {fname}")
         print(f"     └─ {err}")
+        print("   " + "-"*50)
     print("="*60 + "\n")
 
 if __name__ == "__main__":
