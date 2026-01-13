@@ -13,7 +13,7 @@ FILENAME_TO_MASTER_NAME = {
     "crimson corner": [{"crimson corner": "TOTALS"}],
     "unionshakesmart": [{"union shake smart": "TOTALS"}],
     "gardner": [{"gardner": "TOTALS"}],
-    "honors": [{"honors": "TOTALS"}],
+    "honors": [{"phc": ["honors", "honors1"]}],
     "kv": [{"kahlert": "TOTALS"}],
     "shake smart ": [{"student life center": "TOTALS"}],
     "epicenter": [{"epicenter": "TOTALS"}],
@@ -54,4 +54,4 @@ DIRECTORY_PATHS = {
 }
 
 # Data/Col in the cash sheet that needs to be filled to the tender breakdown
-IMPORTANT_CASHEET_DATA_COL = [3,4,6,7,8,11, 13, 16,17,18,19]
+IMPORTANT_CASHEET_DATA_COL = [3, 4, 6, 7, 8, 11, 13, 16, 17, 18, 19]
