@@ -1,65 +1,101 @@
-Tender Breakdown Automation
-
+Tender Breakdown Automation Tool
 1. Overview
 
-This tool automates the transfer of financial data from daily Cash Sheet Reports into the master Tender Breakdown Excel file.
+This tool automates the process of entering daily sales data into the Master Tender Breakdown Excel file.
 
-It reads specific rows (e.g., "TOTALS") from the daily reports and maps them to the correct Location and Date columns in the master file.
+It works by:
+
+Scanning the cash sheets folder for daily Excel reports
+
+Identifying the location based on the filename (e.g., beanyard, hecs)
+
+Opening each report and finding specific data rows (e.g., TOTALS, Hive Tavlo)
+
+Copying the sales data (Sales, Flex, UCash, etc.) into the matching column and date row in Tender Breakdown.xlsx
 
 2. Project Structure
 
-/Project_Folder
+Ensure your folder structure looks like this:
+
+/Chartwells_Automation
 │
-├── run_autofill.bat # <--- DOUBLE CLICK THIS TO RUN
-├── Tender Breakdown.xlsx # The Master Excel File
+├── run_autofill.bat        # [EXECUTABLE] Double-click this to run the tool
+├── Tender Breakdown.xlsx  # [MASTER] Main Excel file
+├── requirements.txt       # [SYSTEM] Python dependencies
 │
-├── cash sheets/ # FOLDER: Place downloaded daily reports here
-│ ├── Beanyard 11-13.xlsx
-│ └── ...
+├── cash sheets/            # [INPUT] Daily downloaded reports
+│   ├── Beanyard 11-13.xlsx
+│   ├── HECS 11-13.xlsx
+│   └── ...
 │
-├── src/ # Source Code
-│ ├── autofill.py # Main logic script
-│ └── config.py # Configuration & Column Mappings
+├── src/                    # [CODE] Source files
+│   ├── autofill.py         # Main automation script
+│   └── config.py           # Configuration & mappings
 │
-└── myenv/ # Python Virtual Environment
+└── myenv/                  # [SYSTEM] Python virtual environment
 
-3. Configuration (src/config.py)
+3. Installation & Setup
 
-If a location name changes, a new location opens, or filenames change, you must update src/config.py.
+Only required when setting up on a new computer
 
-How Mappings Work
+Install Python
 
-The system uses the Filename to determine which Location column to fill.
+Ensure Python 3.x is installed.
 
-Example in config.py:
+Create Virtual Environment
 
-FILENAME_TO_MASTER_NAME = { # "keyword in filename": [{"Master Column Name": "Row Name in Cash Sheet"}]
+Open a terminal in the project folder and run:
 
-    "crimson corner": [
-        {"Crimson Corner": "TOTALS"}, # Fills 'Crimson Corner' col using 'TOTALS' row
-        {"Gardner": "Thirst"}         # Fills 'Gardner' col using 'Thirst' row (same file)
-    ]
+python -m venv myenv
 
-}
+Install Dependencies
 
-Key ("crimson corner"): The script looks for a file containing this text (case-insensitive).
+Activate the environment and install required libraries.
 
-Master Column Name ("Crimson Corner"): Must match the header in Tender Breakdown.xlsx exactly.
+Windows:
 
-Row Name ("TOTALS"): The script searches the cash sheet for a row where Column C (or B) contains this text.
+myenv\Scripts\activate
+pip install openpyxl python-dateutil
 
-4. Technical Requirements
+4. Configuration (src/config.py)
 
-Python 3.x
+This file controls how the script matches cash sheet files to master columns.
 
-Dependencies: openpyxl, python-dateutil
+You must edit this file if:
 
-Virtual Environment: The run_autofill.bat expects a virtual environment named myenv.
+A new location opens
+
+A filename changes (e.g., HECS → Hive)
+
+A row label changes in the cash sheet (e.g., TOTALS → Grand Total)
+
+How to Edit Mappings
+
+Open src/config.py in a text editor and locate:
+
+FILENAME_TO_MASTER_NAME
+
+Mapping Structure
+"filename_keyword": [
+    {"Master Column Name": "Row Label in Cash Sheet"}
+]
+
+Example
+
+If you have a file named HECS Daily.xlsx containing:
+
+Hive data labeled "Hive Tavlo"
+
+Quartzdyne data labeled "Quartz Café"
+
+"hecs": [
+    {"hive": "Hive Tavlo"},
+    {"quartzdyne": "Quartz Café"}
+]
 
 5. Troubleshooting
-
-"Permission Denied": Close Tender Breakdown.xlsx before running the script.
-
-"Date not found": Ensure the cash sheet has a cell containing "Date:" in the first 5 rows.
-
-"Location not found": Check config.py to ensure the filename keyword matches the file you downloaded.
+Error	Cause	Solution
+PermissionError	Tender Breakdown.xlsx is open	Close the Excel file and try again
+Date not found	"Date:" not found in rows 1–5	Verify the cash sheet format
+Keyword not found	Row label missing in Column C	Update row label in config.py
+No mapping found	Filename doesn’t match config keyword	Rename the file to match config (e.g., Beanyard.xlsx)
